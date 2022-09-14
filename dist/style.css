@@ -1,0 +1,48 @@
+body{
+    background-color: rgba(219, 206, 57, 0.184);
+}
+
+.header {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 70px;
+}
+
+.head-background{
+    background-color: rgb(179, 171, 129);
+}
+
+.fa-people-group {
+    font-size: 48px;
+    color:rgb(14, 64, 23);
+    
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    color:rgb(65, 61, 18);
+    font-style: oblique;
+}
+
+.fa-house,
+.fa-user, 
+.fa-display,
+.fa-graduation-cap,
+.fa-github {
+    font-size: 30px;
+}
+
+.box {
+    box-shadow: 2px 4px rgb(64, 74, 10);
+}
+
+
+
+
+
+

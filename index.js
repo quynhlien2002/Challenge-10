@@ -1,8 +1,16 @@
-const inquirer = import('inquirer');
-const fs = require('fs');
+// const inquirer = import('inquirer');
+import inquirer from 'inquirer';
+import fs from 'fs';
+
 
 const promptUser = () => {
     return inquirer.prompt([
+        {
+            type:'list',
+            name: 'roleM', 
+            message: "What is you role?",
+            choices: ["Manager"],
+        },
         {
             type: 'input',
             name: 'nameM', 
@@ -24,9 +32,10 @@ const promptUser = () => {
             message: 'What is your office number?',
         },
         {
-            type:'input',
-            name: 'roleM', 
-            message: "Manager",
+            type:'list',
+            name: 'roleE', 
+            message: "What is you role?",
+            choices: ["Engineer"],
         },
         {
             type: 'input',
@@ -45,13 +54,14 @@ const promptUser = () => {
         },
         {
             type: 'input', 
-            name: 'githubE', 
+            name: 'github', 
             message: 'What is your Github name?',
         },
         {
-            type:'input',
-            name: 'roleE', 
-            message: "Engineer",
+            type:'list',
+            name: 'roleEm', 
+            message: "What is you role?",
+            choices: ["Employee"],
         },
         {
             type: 'input',
@@ -69,9 +79,10 @@ const promptUser = () => {
             message: "What is your email?", 
         },
         {
-            type:'input',
-            name: 'roleEm', 
-            message: "Employee",
+            type:'list',
+            name: 'roleI', 
+            message: "What is you role?",
+            choices: ["Intern"],
         },
         {
             type: 'input',
@@ -89,11 +100,6 @@ const promptUser = () => {
             message: "What is your email?", 
         },
         {
-            type:'input',
-            name: 'roleI', 
-            message: "Intern",
-        },
-        {
             type: 'input', 
             name: 'school', 
             message: 'What is your school?',
@@ -109,56 +115,58 @@ const generateHTML = ({ nameM, idM, emailM, office, roleM, nameE, idE, emailE, g
     <meta charset = "UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href='./dist/style.css'>
+    <script src="https://kit.fontawesome.com/751029ca13.js" crossorigin="anonymous"></script>
     <title>My Team</title>
 </head>
 <body>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid head-background">
   <div class="container">
-    <h1 class="display-4">My Team</h1>
+    <h1 class="display-4 header">My Team    <i class="fa-solid fa-people-group"></i></h1>
   </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
-      <div class="card card-">
+      <div class="card box">
         <div class="card-body">
-          <h5 class="card-title">${roleM}</h5>
-          <p class="card-text">${nameM}</p>
-          <p class="card-text">${idM}</p>
-          <p class="card-text">${emailM}</p>
-          <p class="card-text">${office}</p>
+          <h5 class="card-title title"><u>${roleM}</u>  <i class="fa-solid fa-house"></i></h5>
+          <p class="card-text"> <b>Name:</b> ${nameM}</p>
+          <p class="card-text"> <b>Id Number:</b> ${idM}</p>
+          <p class="card-text"><a href = "mailto: ${emailM}">${emailM}</a></p>
+          <p class="card-text"><b>Office Number:</b> ${office}</p>
         </div>
       </div>
     </div>
     <div class="col mb-4">
-      <div class="card">
+      <div class="card box">
         <div class="card-body">
-          <h5 class="card-title">${roleE}</h5>
-          <p class="card-text">${nameE}</p>
-          <p class="card-text">${idE}</p>
-          <p class="card-text">${emailE}</p>
-          <p class="card-text">${github}</p>
+          <h5 class="card-title title"><u>${roleE}</u>    <i class="fa-solid fa-display"></i></h5>
+          <p class="card-text"><b>Name:</b> ${nameE}</p>
+          <p class="card-text"><b>Id Number:</b> ${idE}</p>
+          <p class="card-text"><a href = "mailto: ${emailE}">${emailE}</a></p>
+          <p class="card-text"><b>Github:</b><a href ="https://github.com/${github}">${github}</a></p>
         </div>
       </div>
     </div>
     <div class="col mb-4">
-      <div class="card">
+      <div class="card box">
         <div class="card-body">
-          <h5 class="card-title">${roleEm}</h5>
-          <p class="card-text">${nameEm}</p>
-          <p class="card-text">${idEm}</p>
-          <p class="card-text">${emailEm}</p>
+          <h5 class="card-title title"><u>${roleEm}</u>    <i class="fa-solid fa-user"></i></h5>
+          <p class="card-text"><b>Name:</b> ${nameEm}</p>
+          <p class="card-text"><b>Id Number:</b> ${idEm}</p>
+          <p class="card-text"><a href = "mailto: ${emailEm}">${emailEm}</a></p>
         </div>
       </div>
     </div>
     <div class="col mb-4">
-      <div class="card">
+      <div class="card box">
         <div class="card-body">
-          <h5 class="card-title">${roleI}</h5>
-          <p class="card-text">${nameI}</p>
-          <p class="card-text">${idI}</p>
-          <p class="card-text">${emailI}</p>
-          <p class="card-text">${school}</p>
+          <h5 class="card-title title"><u>${roleI}</u>    <i class="fa-solid fa-graduation-cap"></i></h5>
+          <p class="card-text"><b>Name:</b> ${nameI}</p>
+          <p class="card-text"><b>Id Number:</b> ${idI}</p>
+          <p class="card-text"><a href = "mailto: ${emailI}">${emailI}</a></p>
+          <p class="card-text"><b>Current School:</b> ${school}</p>
         </div>
       </div>
     </div>
@@ -173,7 +181,7 @@ const generateHTML = ({ nameM, idM, emailM, office, roleM, nameE, idE, emailE, g
 const init = () => {
 promptUser()
 .then((answers) => fs.writeFileSync('index.html', generateHTML(answers)))
-.then(() => console.log("Success, you have created your team"))
+.then(() => console.log("======== Success, you have created your team ========"))
 .catch((err) => console.error(err));
 }
 
